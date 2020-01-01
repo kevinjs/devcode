@@ -45,6 +45,10 @@ int main()
 	}
 	cout << "Insert 10 element, list size: " << list.size() << endl;
 	list.print();
+	int start = -1;
+	int end = 1;
+	cout << "print list[" << start << ", " << end << "]" << endl;
+	list.print(start, end);
 
 
 	return 0;

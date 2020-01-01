@@ -29,6 +29,7 @@ class List
 	  bool isEmpty();
 	  int size();
 	  void print();
+	  void print(int start, int end);
   private:
 	  Node<T>* head;
 	  Node<T>* tail;
@@ -252,36 +253,52 @@ void List<T>::print()
 	cout << "]" << endl;
 }
 
-
-/*
-template<class T>
-class DNode
+template<typename T>
+void List<T>::print(int start, int end)
 {
-	T value;
-	DNode<T>* pre;
-	DNode<T>* next;
-};
+	if(start < 0 || start > length)
+	{
+		cout << "Illegal start " << start << endl;
+		return;
+	}
+	start = start == 0 ? 1 : start;
+	if(end < 0 || end > length)
+	{
+		cout << "Illegal end " << end << endl;
+		return;
+	}
+	end = end == 0 ? 1 : end;
+	if(start > end)
+	{
+		cout << "Illegal start " << start << " and end " << end << endl;
+		return;
+	}
 
-template <class T>
-class DList
-{
-  public:
-	  DList();
-	  ~DList();
-	  DList(DList& list);
-	  void add(T val);
-	  void remove(T index);
-	  void removeAll();
-	  T search(int idx);
-	  bool isEmpty();
-	  int size();
-	  void print();
-	  void revertPrint();
-	  void insert(T val);
-  private:
-	  Node<T>* head;
-	  Node<T>* prev;
-	  int length;
-};*/
+	Node<T>* curr = head;
+	int c = 0;
+	cout << "[";
+	while(NULL != curr->next)
+	{
+		c++;
+		curr = curr->next;
+		if(c >= start && c <= end)
+		{
+			if (c != end)
+			{
+				cout << curr->value << ", ";
+			}
+			else
+			{
+				cout << curr->value;
+			}
+		}
+		else if(c > end)
+		{
+			break;
+		}
+	}
+	cout << "]" << endl;
+
+}
 
 #endif
