@@ -68,7 +68,7 @@ void ArrayStack<T>::push(T val)
 	{
 		throw(std::runtime_error("Stack overflow"));
 	}
-	*(this->stack + this->length - 1) = val;
+	this->stack[this->length] = val;
 	this->length++;
 	return;
 }
@@ -124,7 +124,7 @@ void ArrayStack<T>::print()
 			}
 		}
 	}
-	cout << "]";
+	cout << "->|]" << endl;
 	return;
 }
 
